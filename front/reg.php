@@ -39,12 +39,13 @@
 <script>
 function chkAcc() {
     let acc = $("#acc").val();
-    if (data.acc == 'admin') {
+    if (acc == 'admin') {
         alert("不可使用admin做為帳號");
     } else {
         $.get("api/chk_acc.php", {
             acc
         }, function(res) {
+            console.log(res);
             if (parseInt(res) >= 1) {
                 alert("帳號已被使用");
             } else {
@@ -62,7 +63,7 @@ function reg() {
         pw: $("#pw").val(),
         tel: $("#tel").val(),
         addr: $("#addr").val(),
-        email: $("#email").val(),
+        email: $("#email").val()
     }
 
     if (data.acc == 'admin') {
@@ -75,11 +76,13 @@ function reg() {
                 alert("帳號已被使用");
             } else {
                 $.post("api/reg.php", data, function(res) {
+                    /* console.log(res);  */
                     alert("註冊完成，歡迎加入");
                 })
 
             }
         })
     }
+
 }
 </script>
