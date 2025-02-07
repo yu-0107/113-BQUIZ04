@@ -1,4 +1,4 @@
-<?php include_once "api/db.php" ?>
+<?php include_once "api/db.php";?>
 <!DOCTYPE html
     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!-- saved from url=(0039) -->
@@ -18,19 +18,45 @@
     <div id="main">
         <div id="top">
             <a href="?">
-                <img src="./icon/0416.jpg" style="width:500px;">
+                <img src="./icon/0416.jpg" style="width:500px">
             </a>
-            <div style="padding:10px;display:inline-block;vertical-align:top">
+            <div style="padding:10px;display:inline-block;vertical-align:top;">
                 <a href="?">回首頁</a> |
                 <a href="?do=news">最新消息</a> |
                 <a href="?do=look">購物流程</a> |
                 <a href="?do=buycart">購物車</a> |
+                <?php 
+                if(empty($_SESSION['Mem'])){
+                ?>
                 <a href="?do=login">會員登入</a> |
-                <a href="?do=admin">管理登入</a>
+                <?php
+                }else{
+                    ?>
+                <a href="./api/logout.php?table=Mem">登出</a> |
+                <?php 
+                    }
+                ?>
+                <?php 
+                if(empty($_SESSION['Admin'])){
+                ?>
+                <a href="?do=admin">管理登入</a> |
+                <?php
+                }else{
+                    ?>
+                <a href="back.php">返回管理</a> |
+                <?php 
+                    }
+                ?>
+
             </div>
+
+
         </div>
+
         <div id="left" class="ct">
             <div style="min-height:400px;">
+
+
             </div>
             <span>
                 <div>進站總人數</div>
@@ -39,15 +65,14 @@
             </span>
         </div>
         <div id="right">
-            <?php
+            <?php 
         $do=$_GET['do']??'main';
         $file="front/".$do.".php";
         if(file_exists($file)){
-                include $file;
+            include $file;
         }else{
-                include "front/main.php";
+            include "front/main.php";
         }
-
 
 
         ?>

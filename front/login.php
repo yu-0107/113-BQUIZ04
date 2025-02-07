@@ -1,6 +1,7 @@
 <h2>第一次購物</h2>
 <img src="./icon/0413.jpg" alt="">
 <h2>會員登入</h2>
+<!-- <?=serialize([1,2,3,4,5])?> -->
 <table class="all">
     <tr>
         <td class="tt ct">帳號</td>
@@ -36,7 +37,8 @@ function login() {
         if (parseInt(res)) {
             $.get("api/chk_pw.php", {
                 acc: $("#acc").val(),
-                pw: $("#pw").val()
+                pw: $("#pw").val(),
+                table: "Mem"
             }, function(res) {
 
                 if (parseInt(res)) {
