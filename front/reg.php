@@ -32,14 +32,14 @@
 </table>
 
 <div class="ct">
-    <button>註冊</button>
+    <button onclick="reg()">註冊</button>
     <button>重置</button>
 </div>
 
 <script>
 function chkAcc() {
     let acc = $("#acc").val();
-    if (acc == 'admin') {
+    if (data.acc == 'admin') {
         alert("不可使用admin做為帳號");
     } else {
         $.get("api/chk_acc.php", {
@@ -49,6 +49,34 @@ function chkAcc() {
                 alert("帳號已被使用");
             } else {
                 alert("帳號可以使用");
+
+            }
+        })
+    }
+}
+
+function reg() {
+    let data = {
+        name: $("#name").val(),
+        acc: $("#acc").val(),
+        pw: $("#pw").val(),
+        tel: $("#tel").val(),
+        addr: $("#addr").val(),
+        email: $("#email").val(),
+    }
+
+    if (data.acc == 'admin') {
+        alert("不可使用admin做為帳號");
+    } else {
+        $.get("api/chk_acc.php", {
+            acc: data.acc
+        }, function(res) {
+            if (parseInt(res) >= 1) {
+                alert("帳號已被使用");
+            } else {
+                $.post("api/reg.php", data, function(res) {
+                    alert("註冊完成，歡迎加入");
+                })
 
             }
         })
