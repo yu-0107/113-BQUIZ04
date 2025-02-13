@@ -18,7 +18,7 @@ function all(...$arg){
     if(!empty($arg[0]) && is_array($arg[0])){
         $tmp=$this->arrayToSQL($arg[0]);
         $sql .=" where ".join(" && ",$tmp);
-    }else if(isset($arg[0]) && is_array($arg[0])){
+    }else if(isset($arg[0]) && is_string($arg[0])){
         $sql .=$arg[0];
     }
 
@@ -59,7 +59,7 @@ function save($array){
 
 }
 function del($array){
-    $sql="select * from $this->table ";
+    $sql="delete  from $this->table ";
     if(is_array($array)){
         $tmp=$this->arrayToSQL($array);
         $sql .= " where ".join(" && ",$tmp);
@@ -67,7 +67,7 @@ function del($array){
         $sql .= " where `id`='$array'";
     }
 
-    return $this->exec($sql);
+    return $this->pdo->exec($sql);
 }
 function count(...$arg){
     $sql="select count(*) from $this->table ";
@@ -81,7 +81,6 @@ function count(...$arg){
     if(!empty($arg[1])){
         $sql .= $arg[1];
     }
-
     return $this->pdo->query($sql)->fetchColumn();
 }
 
