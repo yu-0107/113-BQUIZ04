@@ -51,7 +51,7 @@ if(!isset($_SESSION['Mem'])){
 </table>
 <div class="ct">
     <img src="./icon/0411.jpg" onclick="location.href='index.php'">
-    <img src="./icon/0412.jpg" onclick="location.href='?od=checkout'">
+    <img src="./icon/0412.jpg" onclick="location.href='?do=checkout'">
 </div>
 <script>
 function delCart(id) {
