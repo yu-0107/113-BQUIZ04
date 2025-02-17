@@ -1,9 +1,8 @@
-<?php
+<?php 
 $row=$Item->find($_GET['id']);
+
 ?>
-<h2 class="ct">
-    <?$row['name'];?>
-</h2>
+<h2 class="ct"><?=$row['name'];?></h2>
 <style>
 .item {
     display: flex;
@@ -31,16 +30,15 @@ $row=$Item->find($_GET['id']);
         </a>
     </div>
     <div>
-        <div class="pp">分類:</div>
+        <div class='pp'>分類:<?=$Type->find($row['big'])['name'] . ">". $Type->find($row['mid'])['name'];?></div>
         <div class='pp'>編號:<?=$row['no'];?></div>
         <div class='pp'>價錢:<?=$row['price'];?></div>
         <div class='pp'>詳細說明:<?=nl2br($row['intro']);?></div>
         <div class='pp'>庫存量:<?=$row['stock'];?></div>
     </div>
 </div>
-
 <div class="tt ct">
-    <input type="number" name="qt" id="qt" value="1">
+    <input type="number" name="qt" id="qt" value='1'>
     <img src="./icon/0402.jpg" alt="" onclick="buy()">
 </div>
 
