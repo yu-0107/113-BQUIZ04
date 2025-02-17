@@ -49,9 +49,11 @@ $user=$Mem->find(['acc'=>$_SESSION["Mem"]]);
             ?>
         </td>
     </tr>
+
     <?php
     endforeach;
     ?>
+
 </table>
 <div class="all tt ct" style="padding:5px;margin-top:0">總價:<?=$sum;?></div>
 <div class="ct">

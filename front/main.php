@@ -44,9 +44,11 @@ if($typeId==0){
     $rows=$Item->all(['mid'=>$typeId,'sh'=>1]);
 }
 ?>
+
 <?php
 foreach($rows as $row):
 ?>
+
 <div class='item'>
     <div class='pp'>
         <a href="?do=detail&id=<?=$row['id'];?>">
