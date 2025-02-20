@@ -27,6 +27,7 @@ class DB
         if (! empty($arg[1])) {
             $sql .= $arg[1];
         }
+        // echo($sql);
         return $this->fetch_all($sql);
     }
 
@@ -103,6 +104,7 @@ class DB
     public function fetch_one($sql)
     {
         return $this->pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
+        // echo($sql);
     }
     public function fetch_all($sql)
     {

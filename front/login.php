@@ -3,7 +3,7 @@
     <img src="./icon/0413.jpg" alt="">
 </a>
 <h2>會員登入</h2>
-<!-- <?=serialize([1,2,3,4,5])?> -->
+<!-- <?php echo serialize([1, 2, 3, 4, 5])?> -->
 <table class="all">
     <tr>
         <td class="tt ct">帳號</td>
@@ -17,9 +17,9 @@
         <td class="tt ct">驗證碼</td>
         <td class="pp">
             <?php
-                $a=rand(10,99);
-                $b=rand(10,99);
-                $_SESSION['ans']=$a+$b;
+                $a= rand(10, 99);
+                $b= rand(10, 99);
+                $_SESSION['ans'] = $a + $b;
                 echo $a . " + " . $b . " = ";
             ?>
             <input type="text" name="ans" id="ans">
@@ -32,9 +32,7 @@
 function login() {
     let ans = $("#ans").val();
 
-    $.get("./api/chk_ans.php", {
-        ans
-    }, function(res) {
+    $.get("./api/chk_ans.php", {ans}, function(res) {
         //console.log(ans,res)
         if (parseInt(res)) {
             $.get("api/chk_pw.php", {

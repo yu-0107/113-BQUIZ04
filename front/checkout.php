@@ -39,14 +39,14 @@
         ?>
     <tr class="pp">
         <td><?php echo $item['name']; ?></td>
-        <td class="ct"><?php echo $item['no']; ?></td>
-        <td class="ct"><?php echo $qt; ?></td>
-        <td class="ct"><?php echo $item['price']; ?></td>
+        <td class="ct"><?=$item['no']; ?></td>
+        <td class="ct"><?=$qt; ?></td>
+        <td class="ct"><?=$item['price']; ?></td>
         <td class="ct">
             <?php
-                        echo $item['price'] * $qt;
-                        $sum = $sum + ($item['price'] * $qt);
-                    ?>
+            echo $item['price'] * $qt;
+            $sum = $sum + ($item['price'] * $qt);
+            ?>
         </td>
     </tr>
 
@@ -55,7 +55,7 @@
         ?>
 
 </table>
-<div class="all tt ct" style="padding:5px;margin-top:0">總價:<?php echo $sum; ?></div>
+<div class="all tt ct" style="padding:5px;margin-top:0">總價:<?=$sum; ?></div>
 <div class="ct">
     <button onclick="checkout()">確定送出</button>
     <button onclick="location.href='?do=buycart'">返回修改訂單</button>
